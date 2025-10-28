@@ -1,5 +1,6 @@
 "use server";
 
+import { revalidatePath } from "next/cache";
 import { feedbackData } from "./lib/data";
 
 export async function submitFeedback(formData) {
@@ -17,9 +18,9 @@ export async function submitFeedback(formData) {
     email,
     message,
   };
-  
 
   feedbackData.push(newFeedback);
+  revalidatePath("/");
 
   return { success: true };
 }
