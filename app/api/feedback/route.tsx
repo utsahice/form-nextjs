@@ -1,5 +1,5 @@
-import { feedbackData } from "@/app/lib/data";
+import { feedbackData } from '@/app/lib/data'
 
 export async function GET() {
-  return Response.json(feedbackData);
+  return Response.json(feedbackData)
 }

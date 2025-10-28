@@ -1,15 +1,15 @@
-"use server";
+'use server'
 
-import { revalidatePath } from "next/cache";
-import { feedbackData } from "./lib/data";
+import { revalidatePath } from 'next/cache'
+import { feedbackData } from './lib/data'
 
 export async function submitFeedback(formData) {
-  const name = formData.get("name");
-  const email = formData.get("email");
-  const message = formData.get("message");
+  const name = formData.get('name')
+  const email = formData.get('email')
+  const message = formData.get('message')
 
   if (!name || !email || !message) {
-    throw new Error("All fields are required.");
+    throw new Error('All fields are required.')
   }
 
   const newFeedback = {
@@ -17,10 +17,10 @@ export async function submitFeedback(formData) {
     name,
     email,
     message,
-  };
+  }
 
-  feedbackData.push(newFeedback);
-  revalidatePath("/");
+  feedbackData.push(newFeedback)
+  revalidatePath('/')
 
-  return { success: true };
+  return { success: true }
 }
