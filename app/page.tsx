@@ -2,8 +2,6 @@ import { submitFeedback } from "./actions";
 import { feedbackData } from "./lib/data";
 
 export default async function Home() {
-  // Server Component → can access server data directly (SSR)
-  const feedbackList = feedbackData;
 
   return (
     <main className="min-h-screen flex flex-col items-center justify-center bg-gray-50 text-gray-900 p-8">
@@ -53,11 +51,11 @@ export default async function Home() {
 
       <div className="mt-10 w-full max-w-md">
         <h2 className="text-2xl font-semibold mb-4">Recent Feedback</h2>
-        {feedbackList.length === 0 ? (
+        {feedbackData.length === 0 ? (
           <p className="text-gray-500">No feedback yet.</p>
         ) : (
           <ul className="space-y-3">
-            {feedbackList.map((fb) => (
+            {feedbackData.map((fb) => (
               <li
                 key={fb.id}
                 className="p-4 bg-white border rounded shadow-sm"
